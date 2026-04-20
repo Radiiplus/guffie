@@ -566,9 +566,9 @@ export default function Chat() {
                   onClick={() => currentUser && handleUserClick(currentUser.username)}
                   className="hover:opacity-80 transition-opacity"
                 >
-                  <Avatar className="h-8 w-8 border border-violet-500/20 bg-transparent after:border-transparent">
+                  <Avatar className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden bg-transparent border border-violet-500/20">
                     <AvatarImage src={resolveAvatarSrc(currentUser?.avatarUrl)} alt={currentUser?.fullName ?? "User"} />
-                    <InitialsAvatarFallback className="bg-transparent text-[1rem]" initials={currentUser?.initials ?? "GC"} />
+                    <InitialsAvatarFallback className="bg-transparent text-[1rem] leading-none" initials={currentUser?.initials ?? "GC"} />
                   </Avatar>
                 </button>
                 <div>

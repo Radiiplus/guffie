@@ -1,5 +1,5 @@
 import { createClient, type Client } from "graphql-ws";
-import { endpoints } from "./config";
+import { config } from "./config";
 
 let wsClientSingleton: Client | null = null;
 
@@ -15,7 +15,7 @@ const getAuthToken = (): string | null => {
 export const getGraphqlWsClient = (): Client => {
   if (wsClientSingleton) return wsClientSingleton;
   wsClientSingleton = createClient({
-    url: endpoints.ws,
+    url: config.wsUrl,
     connectionParams: async () => {
       const token = getAuthToken();
       return token ? { Authorization: `Bearer ${token}` } : {};
@@ -29,9 +29,10 @@ export async function graphqlRequest<T>(
   variables?: Record<string, any>
 ): Promise<T> {
   const token = getAuthToken();
-  const response = await fetch(endpoints.graphql, {
+  
+  const response = await fetch(config.graphqlUrl, {
     method: "POST",
-    credentials: "include",
+    credentials: "include", // Include cookies for __session
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -48,4 +49,5 @@ export async function graphqlRequest<T>(
   if (result.errors) throw new Error(result.errors[0].message);
   return result.data;
 }
+
 

@@ -1,6 +1,10 @@
 /**
- * Frontend Configuration & API Client
- * Handles environment variables, type definitions, and GraphQL communication.
+ * Frontend Configuration
+ * 
+ * Single Backend Configuration:
+ * Both frontend and backend hosted on same domain (e.g., example.com)
+ * All requests (auth and data) go to /graphql endpoint
+ * Cookies are automatically sent/set since same domain
  */
 
 const defaultApiOrigin = (() => {
@@ -9,7 +13,7 @@ const defaultApiOrigin = (() => {
     try {
       return new URL(graphqlUrl).origin;
     } catch {
-      // Fall back below.
+      return "http://localhost:4000";
     }
   }
   return "http://localhost:4000";

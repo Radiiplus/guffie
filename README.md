@@ -8,8 +8,7 @@ Guffie is a social app built for people who want to share, connect, and stay in 
 
 It combines the best parts of social posting, real-time conversation, and community interaction in one place, with a clean experience that feels fast and personal.
 
-**Live App:** https://guffie.web.app
-
+**Live App:** https://guffie.site
 ## What Guffie Is
 
 Guffie is where you can:

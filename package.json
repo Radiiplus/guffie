@@ -1,12 +1,12 @@
 {
-  "name": "Guffie",
+  "name": "guffie",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && node scripts/firebase.mjs",
-    "generate:prompt": "node generate.js",
+    "build": "tsc -b && vite build",
+    "generate:prompt": "node scripts/generate.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

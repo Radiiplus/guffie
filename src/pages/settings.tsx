@@ -108,7 +108,7 @@ const convertImageToWebpData = async (file: File): Promise<CropperImageData> => 
 
 export default function SettingsPage() {
   const navigate = useNavigate();
-  const { user, updateUser } = useSessionUser();
+  const { user, updateUser, refreshSessionUser } = useSessionUser();
   
   // State
   const [loading, setLoading] = useState(true);
@@ -346,6 +346,7 @@ export default function SettingsPage() {
           : prev
       );
       updateUser({ avatarUrl: updated.user.avatarUrl || null });
+      await refreshSessionUser();
 
       showToast("Avatar uploaded successfully", "success");
     } catch (error) {
@@ -374,6 +375,7 @@ export default function SettingsPage() {
       if (!updated.success) throw new Error(updated.message || "Failed to remove avatar.");
       setProfile((prev) => (prev ? { ...prev, avatarUrl: null } : prev));
       updateUser({ avatarUrl: null });
+      await refreshSessionUser();
       showToast("Avatar removed", "success");
     } catch (error) {
       console.error(error);
