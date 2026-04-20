@@ -3,8 +3,10 @@ import { Sidebar } from "@/components/ui/sidebar";
 import { Header } from "@/components/ui/header";
 import { PostCard } from "@/components/feed/pcard";
 import { api, type FeedPost } from "@/lib/api";
+import { useSessionUser } from "@/lib/session";
 
 export default function AnonymousFeed() {
+  const { user } = useSessionUser();
   const [posts, setPosts] = useState<FeedPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
@@ -121,7 +123,13 @@ export default function AnonymousFeed() {
               </div>
             )}
 
-            {!hasMore && !loading && posts.length === 0 && (
+            {!loading && posts.length === 0 && !user && (
+              <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
+                No anonymous posts are available right now.
+              </div>
+            )}
+
+            {!hasMore && !loading && posts.length === 0 && user && (
               <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
                 No anonymous posts yet.
               </div>

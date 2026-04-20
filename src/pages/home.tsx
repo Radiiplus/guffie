@@ -7,8 +7,10 @@ import { Sidebar } from "@/components/ui/sidebar";
 import { Header } from "@/components/ui/header";
 import { PostCard } from "@/components/feed/pcard";
 import { api, type FeedPost } from "@/lib/api";
+import { useSessionUser } from "@/lib/session";
 
 export default function Home() {
+  const { user } = useSessionUser();
   const [posts, setPosts] = useState<FeedPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
@@ -122,6 +124,16 @@ export default function Home() {
                     skeleton
                   />
                 ))}
+              </div>
+            )}
+            {!loading && posts.length === 0 && !user && (
+              <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
+                No posts are available right now.
+              </div>
+            )}
+            {!loading && posts.length === 0 && user && (
+              <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
+                No posts available yet.
               </div>
             )}
             {!hasMore && !loading && (

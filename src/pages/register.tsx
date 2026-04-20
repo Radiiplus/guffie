@@ -18,7 +18,7 @@ import {
   AtSign,
   CheckCircle2,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // Import Schema & Countries
 import {
@@ -32,6 +32,7 @@ import { NeonLogo } from "@/components/logo";
 import { InputGroup, PasswordInput, DetailRow } from "@/components/inputs";
 import { Button } from "@/components/ui/button";
 import { SuccessModal } from "@/components/ui/success"; 
+import { LegalModal } from "@/components/legal";
 import { api } from "@/lib/api";
 
 // Animation variants
@@ -68,6 +69,9 @@ export default function Register() {
     pk: string;
     username: string;
   } | null>(null);
+  const [activeLegalModal, setActiveLegalModal] = React.useState<"terms" | "privacy" | null>(null);
+  const [acceptedTerms, setAcceptedTerms] = React.useState(false);
+  const [acceptedPrivacy, setAcceptedPrivacy] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -77,6 +81,7 @@ export default function Register() {
     formState: { errors },
     watch,
     reset,
+    setValue,
   } = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -94,6 +99,13 @@ export default function Register() {
     setValueAs: (value: unknown) =>
       typeof value === "string" ? value.toLowerCase() : value,
   });
+
+  React.useEffect(() => {
+    setValue("terms", acceptedTerms && acceptedPrivacy, {
+      shouldValidate: true,
+      shouldDirty: true,
+    });
+  }, [acceptedTerms, acceptedPrivacy, setValue]);
 
   // Real-time Username Check Effect
   React.useEffect(() => {
@@ -170,7 +182,7 @@ export default function Register() {
 
   const handleInitiateSubmit = () => {
     setApiError(null);
-    if (!watchedValues.terms) {
+    if (!acceptedTerms || !acceptedPrivacy) {
       setApiError("Please agree to the Terms of Service and Privacy Policy.");
       return;
     }
@@ -206,6 +218,9 @@ export default function Register() {
       // Show the PK Backup Modal
       setShowSuccessModal(true);
       reset();
+      setAcceptedTerms(false);
+      setAcceptedPrivacy(false);
+      setActiveLegalModal(null);
     } catch (err) {
       console.error("Registration Failed:", err);
       if (err instanceof Error) {
@@ -386,24 +401,28 @@ export default function Register() {
                       }
                     />
                   </div>
-                  <label className="w-full text-left flex items-start gap-2 text-xs text-zinc-400 mt-1">
-                    <input
-                      type="checkbox"
-                      className="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-violet-500"
-                      {...register("terms")}
-                    />
-                    <span>
-                      I agree to the{" "}
-                      <Link to="/terms" className="text-violet-400 hover:text-violet-300 underline">
-                        Terms of Service
-                      </Link>{" "}
-                      and{" "}
-                      <Link to="/privacy" className="text-violet-400 hover:text-violet-300 underline">
-                        Privacy Policy
-                      </Link>
-                      .
-                    </span>
-                  </label>
+                  <div className="w-full rounded-xl border border-zinc-800 bg-zinc-900/30 p-3 text-left space-y-2">
+                    <p className="text-xs text-zinc-400">
+                      Review and accept both legal documents to continue.
+                    </p>
+                    <div className="flex flex-col gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setActiveLegalModal("terms")}
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-left text-zinc-300 hover:border-violet-500/50 hover:text-white transition-colors"
+                      >
+                        Terms of Service: {acceptedTerms ? "Accepted" : "Pending"}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveLegalModal("privacy")}
+                        className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-left text-zinc-300 hover:border-violet-500/50 hover:text-white transition-colors"
+                      >
+                        Privacy Policy: {acceptedPrivacy ? "Accepted" : "Pending"}
+                      </button>
+                    </div>
+                    <input type="hidden" {...register("terms")} />
+                  </div>
                   {errors.terms && (
                     <p className="w-full text-left text-xs text-red-500">{errors.terms.message}</p>
                   )}
@@ -481,6 +500,30 @@ export default function Register() {
           onConfirm={handleSuccessConfirm}
         />
       )}
+
+      <LegalModal
+        isOpen={activeLegalModal === "terms"}
+        onClose={() => setActiveLegalModal(null)}
+        type="terms"
+        onAccept={() => {
+          setAcceptedTerms(true);
+          setActiveLegalModal(null);
+        }}
+        isAccepted={acceptedTerms}
+        setAccepted={setAcceptedTerms}
+      />
+
+      <LegalModal
+        isOpen={activeLegalModal === "privacy"}
+        onClose={() => setActiveLegalModal(null)}
+        type="privacy"
+        onAccept={() => {
+          setAcceptedPrivacy(true);
+          setActiveLegalModal(null);
+        }}
+        isAccepted={acceptedPrivacy}
+        setAccepted={setAcceptedPrivacy}
+      />
     </div>
   );
 }
