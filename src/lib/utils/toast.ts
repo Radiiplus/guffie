@@ -3,7 +3,7 @@ export type ToastType = "success" | "error" | "info";
 export function showToast(message: string, type: ToastType = "info"): void {
   if (typeof window === "undefined") return;
 
-  const id = "guffi-global-toast-container";
+  const id = "guffie-global-toast-container";
   let container = document.getElementById(id);
   if (!container) {
     container = document.createElement("div");

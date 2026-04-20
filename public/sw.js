@@ -1,5 +1,5 @@
-const STATIC_CACHE = "guffi-static-v2";
-const IMAGE_CACHE = "guffi-images-v2";
+const STATIC_CACHE = "guffie-static-v2";
+const IMAGE_CACHE = "guffie-images-v2";
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -86,7 +86,7 @@ self.addEventListener("push", (event) => {
     body: payload.body || "",
     icon: "/favicon.ico",
     badge: "/favicon.ico",
-    tag: payload.tag || "guffi",
+    tag: payload.tag || "guffie",
     data: {
       url: payload.url || "/n",
     },

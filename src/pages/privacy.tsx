@@ -34,7 +34,7 @@ export default function PrivacyPage() {
               <section>
                 <h2 className="text-lg font-semibold text-white mb-3">1. Introduction</h2>
                 <p className="leading-relaxed">
-                  Guffi respects your privacy and is committed to protecting your personal data. This policy explains how we collect,
+                  Guffie respects your privacy and is committed to protecting your personal data. This policy explains how we collect,
                   use, and protect data across posts, chat, anonymous content, and notifications.
                 </p>
               </section>

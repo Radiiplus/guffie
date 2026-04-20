@@ -7,7 +7,7 @@ export const LEGAL_CONTENT = {
   terms: {
     title: "Terms of Service",
     body: `
-      <p>Welcome to Guffi. By creating an account, you agree to our standard usage policies.</p>
+      <p>Welcome to Guffie. By creating an account, you agree to our standard usage policies.</p>
       <p><strong>1. Acceptance of Terms</strong><br/>By accessing this service, you accept these terms.</p>
       <p><strong>2. User Conduct</strong><br/>You agree not to use the service for any unlawful purpose.</p>
       <p><strong>3. Data Usage</strong><br/>We collect necessary data to provide our services securely.</p>

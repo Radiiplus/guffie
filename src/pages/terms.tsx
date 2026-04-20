@@ -34,14 +34,14 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-lg font-semibold text-white mb-3">1. Acceptance of Terms</h2>
                 <p className="leading-relaxed">
-                  By accessing or using Guffi ("the Platform"), you agree to be bound by these Terms of Service.
+                  By accessing or using Guffie ("the Platform"), you agree to be bound by these Terms of Service.
                   If you do not agree to these terms, do not use the Platform.
                 </p>
               </section>
 
               <section>
                 <h2 className="text-lg font-semibold text-white mb-3">2. Description of Service</h2>
-                <p className="leading-relaxed mb-2">Guffi is a social media platform that allows users to:</p>
+                <p className="leading-relaxed mb-2">Guffie is a social media platform that allows users to:</p>
                 <ul className="list-disc list-inside space-y-1 ml-2">
                   <li>Share posts with images, text, and media</li>
                   <li>Engage through likes, comments, and replies</li>
@@ -116,7 +116,7 @@ export default function TermsPage() {
               <section>
                 <h2 className="text-lg font-semibold text-white mb-3">9. Limitation of Liability</h2>
                 <p className="leading-relaxed">
-                  The Platform is provided "as is" without warranties. Guffi is not liable for indirect or consequential damages.
+                  The Platform is provided "as is" without warranties. Guffie is not liable for indirect or consequential damages.
                 </p>
               </section>
 

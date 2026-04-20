@@ -713,7 +713,7 @@ export default function SettingsPage() {
             <div className="break-inside-avoid mb-4 rounded-xl bg-white/[0.02] backdrop-blur-sm hover:bg-white/[0.05] transition-all p-4">
               <div className="flex items-center gap-2 mb-3">
                 <Info className="w-4 h-4 text-pink-400" />
-                <h3 className="font-semibold text-white text-sm">About Guffi</h3>
+                <h3 className="font-semibold text-white text-sm">About Guffie</h3>
               </div>
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between text-zinc-400">

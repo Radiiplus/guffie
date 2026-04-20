@@ -33,7 +33,7 @@ type VisibilitySnapshot = {
   visibilityChanges: number;
 };
 
-const DB_NAME = "guffi-activity";
+const DB_NAME = "guffie-activity";
 const DB_VERSION = 1;
 const STORE_NAME = "aggregate";
 const RECORD_KEY = "weekly";

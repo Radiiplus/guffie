@@ -144,7 +144,7 @@ function PwaInstallPrompt() {
 
   return (
     <div className="fixed bottom-4 right-4 z-[120] max-w-xs rounded-xl border border-violet-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-sm">
-      <p className="text-sm text-white">Install Guffi for faster access and app-like usage.</p>
+      <p className="text-sm text-white">Install Guffie for faster access and app-like usage.</p>
       <div className="mt-3 flex gap-2">
         <button
           type="button"

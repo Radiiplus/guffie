@@ -1,6 +1,6 @@
 {
-  "name": "Guffi",
-  "short_name": "Guffi",
+  "name": "Guffie",
+  "short_name": "Guffie",
   "description": "Real-time social web app for public/anonymous posting, image sharing, threaded comments, global chat, follows, and notifications.",
   "start_url": "/",
   "scope": "/",

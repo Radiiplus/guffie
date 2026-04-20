@@ -2,7 +2,7 @@
 import * as React from "react";
 import { api, type SessionUserPublic } from "@/lib/api";
 
-const SESSION_USER_STORAGE_KEY = "guffi:session:user";
+const SESSION_USER_STORAGE_KEY = "guffie:session:user";
 
 export interface SessionUserView extends SessionUserPublic {
   initials: string;

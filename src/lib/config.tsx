@@ -25,8 +25,8 @@ export const config = {
   vapidPublicKey: import.meta.env.VITE_VAPID_PUBLIC_KEY || "",
   legal: {
     lastUpdated: "April 20, 2026",
-    supportEmail: "support@guffi.web.app",
-    privacyEmail: "privacy@guffi.web.app",
+    supportEmail: "support@guffie.web.app",
+    privacyEmail: "privacy@guffie.web.app",
   },
 };
 
@@ -46,7 +46,7 @@ export const resolveImageUrl = (value?: string | null): string | undefined => {
 };
 
 export const SITE_CONFIG = {
-  name: "Guffi",
+  name: "Guffie",
   theme: {
     fontFamily: "\"Great Vibes\", cursive",
   },

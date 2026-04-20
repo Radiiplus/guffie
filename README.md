@@ -1,18 +1,18 @@
 <p align="center">
-  <img src="./public/icons/icon-512x512.png" alt="Guffi Icon" width="180" />
+  <img src="./public/icons/icon-512x512.png" alt="Guffie Icon" width="180" />
 </p>
 
-# Guffi
+# Guffie
 
-Guffi is a social app built for people who want to share, connect, and stay in the moment without friction.
+Guffie is a social app built for people who want to share, connect, and stay in the moment without friction.
 
 It combines the best parts of social posting, real-time conversation, and community interaction in one place, with a clean experience that feels fast and personal.
 
-**Live App:** https://guffi.web.app
+**Live App:** https://guffie.web.app
 
-## What Guffi Is
+## What Guffie Is
 
-Guffi is where you can:
+Guffie is where you can:
 
 - Share what is on your mind instantly
 - Post publicly or anonymously depending on how open you want to be
@@ -21,19 +21,19 @@ Guffi is where you can:
 - Follow people you care about and keep up with their updates
 - Get notified when people interact with your content
 
-In simple terms, Guffi is designed to feel like your everyday social space, but lighter, faster, and more direct.
+In simple terms, Guffie is designed to feel like your everyday social space, but lighter, faster, and more direct.
 
 ## Why People Use It
 
 Most platforms either feel too noisy or too complicated.  
-Guffi is built to keep things simple:
+Guffie is built to keep things simple:
 
 - You can speak freely (including anonymous mode)
 - You can engage quickly (likes, comments, replies, chat)
 - You can discover and follow interesting people
 - You can stay updated without constantly checking manually
 
-Whether you want to post casually, build a presence, or just hang out in real-time chat, Guffi gives you that in one experience.
+Whether you want to post casually, build a presence, or just hang out in real-time chat, Guffie gives you that in one experience.
 
 ## Core Experience
 
@@ -47,14 +47,14 @@ You are not waiting around for delayed updates.
 
 ### 3. Build Community
 Follow users, view profiles, and interact through comments and replies.  
-Guffi makes it easy to find your people and stay connected.
+Guffie makes it easy to find your people and stay connected.
 
 ### 4. Stay in the Loop
 Get notifications for important activity so you never miss responses, mentions, or engagement.
 
-## Who Guffi Is For
+## Who Guffie Is For
 
-Guffi is for:
+Guffie is for:
 
 - People who want a straightforward social app
 - Creators who want to post quickly and often
@@ -63,7 +63,7 @@ Guffi is for:
 
 ## The Big Idea
 
-Guffi is built around one simple idea:
+Guffie is built around one simple idea:
 
 **social interaction should feel effortless.**
 
