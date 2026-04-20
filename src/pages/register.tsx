@@ -406,18 +406,6 @@ export default function Register() {
                       }
                     />
                   </div>
-                  <div className="w-full rounded-xl border border-zinc-800 bg-zinc-900/30 p-3 text-left space-y-2">
-                    <p className="text-xs text-zinc-400">
-                      Registration requires accepting Terms and Privacy in a single modal.
-                    </p>
-                    <p className="text-xs text-zinc-300">
-                      Status: {acceptedTerms && acceptedPrivacy ? "Accepted" : "Pending"}
-                    </p>
-                    <input type="hidden" {...register("terms")} />
-                  </div>
-                  {errors.terms && (
-                    <p className="w-full text-left text-xs text-red-500">{errors.terms.message}</p>
-                  )}
                 </div>
               )}
             </motion.form>
