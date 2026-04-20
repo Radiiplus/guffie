@@ -34,7 +34,7 @@ export function LegalModal({
   const bothAccepted = acceptedTerms && acceptedPrivacy;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4">
       <div className="relative w-full max-w-lg rounded-xl border border-zinc-800 bg-zinc-950 p-6 shadow-2xl animate-in fade-in zoom-in duration-200">
         <div className="mb-6 text-center">
           <div className="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-300">
