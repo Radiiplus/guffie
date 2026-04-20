@@ -23,6 +23,11 @@ export const config = {
   wsUrl: import.meta.env.VITE_WS_URL || "ws://localhost:4000/graphql",
   imageBaseUrl: import.meta.env.VITE_IMAGE_URL || "http://localhost:4000/img",
   vapidPublicKey: import.meta.env.VITE_VAPID_PUBLIC_KEY || "",
+  legal: {
+    lastUpdated: "April 20, 2026",
+    supportEmail: "support@guffi.web.app",
+    privacyEmail: "privacy@guffi.web.app",
+  },
 };
 
 export const endpoints = {

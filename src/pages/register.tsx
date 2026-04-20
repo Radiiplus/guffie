@@ -18,7 +18,7 @@ import {
   AtSign,
   CheckCircle2,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Import Schema & Countries
 import {
@@ -30,7 +30,6 @@ import {
 // Import Modular Components
 import { NeonLogo } from "@/components/logo";
 import { InputGroup, PasswordInput, DetailRow } from "@/components/inputs";
-import { LegalModal } from "@/components/legal";
 import { Button } from "@/components/ui/button";
 import { SuccessModal } from "@/components/ui/success"; 
 import { api } from "@/lib/api";
@@ -57,8 +56,6 @@ export default function Register() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
-  const [showLegalModal, setShowLegalModal] = React.useState(false);
-  const [isPolicyAccepted, setIsPolicyAccepted] = React.useState(false);
   const [apiError, setApiError] = React.useState<string | null>(null);
 
   // Real-time Username Validation State
@@ -173,13 +170,15 @@ export default function Register() {
 
   const handleInitiateSubmit = () => {
     setApiError(null);
-    setShowLegalModal(true);
-    setIsPolicyAccepted(false);
+    if (!watchedValues.terms) {
+      setApiError("Please agree to the Terms of Service and Privacy Policy.");
+      return;
+    }
+    confirmAndSubmit(watchedValues as RegisterFormValues);
   };
 
   const confirmAndSubmit = async (data: RegisterFormValues) => {
     console.log("confirmAndSubmit called with data:", data);
-    setShowLegalModal(false);
     setIsLoading(true);
     setApiError(null);
 
@@ -387,6 +386,27 @@ export default function Register() {
                       }
                     />
                   </div>
+                  <label className="w-full text-left flex items-start gap-2 text-xs text-zinc-400 mt-1">
+                    <input
+                      type="checkbox"
+                      className="mt-0.5 h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-violet-500"
+                      {...register("terms")}
+                    />
+                    <span>
+                      I agree to the{" "}
+                      <Link to="/terms" className="text-violet-400 hover:text-violet-300 underline">
+                        Terms of Service
+                      </Link>{" "}
+                      and{" "}
+                      <Link to="/privacy" className="text-violet-400 hover:text-violet-300 underline">
+                        Privacy Policy
+                      </Link>
+                      .
+                    </span>
+                  </label>
+                  {errors.terms && (
+                    <p className="w-full text-left text-xs text-red-500">{errors.terms.message}</p>
+                  )}
                 </div>
               )}
             </motion.form>
@@ -451,21 +471,6 @@ export default function Register() {
           </Button>
         </div>
       </div>
-
-      {/* Legal Modal */}
-      <LegalModal
-        isOpen={showLegalModal}
-        onClose={() => setShowLegalModal(false)}
-        type="terms"
-        onAccept={() => {
-          console.log("onAccept callback triggered");
-          const dataWithTerms = { ...watchedValues, terms: true } as RegisterFormValues;
-          confirmAndSubmit(dataWithTerms);
-        }}
-        isAccepted={isPolicyAccepted}
-        setAccepted={setIsPolicyAccepted}
-        isLoading={isLoading}
-      />
 
       {/* NEW: Success/PK Backup Modal */}
       {successData && (

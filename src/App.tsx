@@ -25,6 +25,8 @@ const Chat = lazy(() => import("@/pages/chat"));
 const ProfilePage = lazy(() => import("@/pages/profile"));
 const NotificationsPage = lazy(() => import("@/pages/notifications"));
 const SettingsPage = lazy(() => import("@/pages/settings"));
+const TermsPage = lazy(() => import("@/pages/terms"));
+const PrivacyPage = lazy(() => import("@/pages/privacy"));
 
 function PresenceHeartbeat() {
   const { user } = useSessionUser();
@@ -191,6 +193,8 @@ export default function App() {
               <Route path="/n" element={<NotificationsPage />} />
               <Route path="/n/:id" element={<NotificationsPage />} />
               <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
             </Routes>
           </Suspense>
         </BrowserRouter>
