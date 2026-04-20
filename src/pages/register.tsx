@@ -69,7 +69,7 @@ export default function Register() {
     pk: string;
     username: string;
   } | null>(null);
-  const [activeLegalModal, setActiveLegalModal] = React.useState<"terms" | "privacy" | null>(null);
+  const [showLegalModal, setShowLegalModal] = React.useState(false);
   const [acceptedTerms, setAcceptedTerms] = React.useState(false);
   const [acceptedPrivacy, setAcceptedPrivacy] = React.useState(false);
 
@@ -182,10 +182,15 @@ export default function Register() {
 
   const handleInitiateSubmit = () => {
     setApiError(null);
+    setShowLegalModal(true);
+  };
+
+  const handleAcceptAndSubmit = () => {
     if (!acceptedTerms || !acceptedPrivacy) {
       setApiError("Please agree to the Terms of Service and Privacy Policy.");
       return;
     }
+    setShowLegalModal(false);
     confirmAndSubmit(watchedValues as RegisterFormValues);
   };
 
@@ -220,7 +225,7 @@ export default function Register() {
       reset();
       setAcceptedTerms(false);
       setAcceptedPrivacy(false);
-      setActiveLegalModal(null);
+      setShowLegalModal(false);
     } catch (err) {
       console.error("Registration Failed:", err);
       if (err instanceof Error) {
@@ -403,24 +408,11 @@ export default function Register() {
                   </div>
                   <div className="w-full rounded-xl border border-zinc-800 bg-zinc-900/30 p-3 text-left space-y-2">
                     <p className="text-xs text-zinc-400">
-                      Review and accept both legal documents to continue.
+                      Registration requires accepting Terms and Privacy in a single modal.
                     </p>
-                    <div className="flex flex-col gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setActiveLegalModal("terms")}
-                        className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-left text-zinc-300 hover:border-violet-500/50 hover:text-white transition-colors"
-                      >
-                        Terms of Service: {acceptedTerms ? "Accepted" : "Pending"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setActiveLegalModal("privacy")}
-                        className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-xs text-left text-zinc-300 hover:border-violet-500/50 hover:text-white transition-colors"
-                      >
-                        Privacy Policy: {acceptedPrivacy ? "Accepted" : "Pending"}
-                      </button>
-                    </div>
+                    <p className="text-xs text-zinc-300">
+                      Status: {acceptedTerms && acceptedPrivacy ? "Accepted" : "Pending"}
+                    </p>
                     <input type="hidden" {...register("terms")} />
                   </div>
                   {errors.terms && (
@@ -502,27 +494,14 @@ export default function Register() {
       )}
 
       <LegalModal
-        isOpen={activeLegalModal === "terms"}
-        onClose={() => setActiveLegalModal(null)}
-        type="terms"
-        onAccept={() => {
-          setAcceptedTerms(true);
-          setActiveLegalModal(null);
-        }}
-        isAccepted={acceptedTerms}
-        setAccepted={setAcceptedTerms}
-      />
-
-      <LegalModal
-        isOpen={activeLegalModal === "privacy"}
-        onClose={() => setActiveLegalModal(null)}
-        type="privacy"
-        onAccept={() => {
-          setAcceptedPrivacy(true);
-          setActiveLegalModal(null);
-        }}
-        isAccepted={acceptedPrivacy}
-        setAccepted={setAcceptedPrivacy}
+        isOpen={showLegalModal}
+        onClose={() => setShowLegalModal(false)}
+        onAccept={handleAcceptAndSubmit}
+        acceptedTerms={acceptedTerms}
+        acceptedPrivacy={acceptedPrivacy}
+        setAcceptedTerms={setAcceptedTerms}
+        setAcceptedPrivacy={setAcceptedPrivacy}
+        isLoading={isLoading}
       />
     </div>
   );

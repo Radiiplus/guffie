@@ -125,13 +125,13 @@ export default function AnonymousFeed() {
 
             {!loading && posts.length === 0 && !user && (
               <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
-                No anonymous posts are available right now.
+                You're all caught up! ✨
               </div>
             )}
 
             {!hasMore && !loading && posts.length === 0 && user && (
               <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
-                No anonymous posts yet.
+                You're all caught up! ✨
               </div>
             )}
           </div>

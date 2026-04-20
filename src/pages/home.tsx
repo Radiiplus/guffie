@@ -128,12 +128,12 @@ export default function Home() {
             )}
             {!loading && posts.length === 0 && !user && (
               <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
-                No posts are available right now.
+                You're all caught up! ✨
               </div>
             )}
             {!loading && posts.length === 0 && user && (
               <div className="py-8 text-center text-zinc-500 text-sm col-span-full">
-                No posts available yet.
+                You're all caught up! ✨
               </div>
             )}
             {!hasMore && !loading && (
